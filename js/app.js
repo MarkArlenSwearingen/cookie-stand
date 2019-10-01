@@ -8,6 +8,7 @@
 
 //defining global variables
 var hrOp = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+var hourTot = [];
 
 //Create constructor functions;
 function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDayCook) {
@@ -64,14 +65,7 @@ Store.prototype.estCookHrLoc = function(){
 
 Store.prototype.tableHead = function(){
   var body = document.getElementById('body');
-  // var h2 = document.createElement('h2');
-  // // h2.textContent = this.location;
-  // body.appendChild(h2);
-
-  // // var ul = document.createElement('ul');
-  // // h2.appendChild(ul);
-
-//add Table to DOM
+  // add Table to DOM;
   var table = document.createElement('table');
   console.log(table);
   table.setAttribute('id', 'daily');
@@ -94,6 +88,34 @@ Store.prototype.tableHead = function(){
   tr.appendChild(th);
 };
 
+//add table footer to DOM
+Store.prototype.tableFooter = function(){
+  var body = document.getElementById('body');
+  // add Table to DOM;
+  var table = document.createElement('table');
+  console.log(table);
+  table.setAttribute('id', 'daily');
+  body.appendChild(table);
+  var tr = document.createElement('tr');
+ 
+  table.appendChild(tr);
+  console.log(tr);
+  var th = document.createElement('th');
+  th.textContent = 'Totals';
+  tr.appendChild(th);
+  
+  //add table headers to DOM
+  for (var i = 0; i < hrOp.length; i++){
+    th = document.createElement('th');
+    th.textContent = hrOp[i];//revise to totals from global variable hourTot;
+    tr.appendChild(th);
+  }
+  //add Hourly Grand Total text for row header
+  th = document.createElement('th');
+  th.textContent = 'Grand Total goes here';
+  tr.appendChild(th);
+};
+
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
 var dubai = new Store('Dubai', 11, 38, 3.7, [], 0);
@@ -104,6 +126,7 @@ var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 //TODO  place data above into single array.
 //      write a loop function to estimate the hourly cookie totals and render each store.
 seattle.tableHead();
+seattle.tableFooter();
 seattle.estCookHrLoc();
 seattle.render();
 
