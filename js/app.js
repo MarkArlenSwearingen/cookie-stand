@@ -30,13 +30,12 @@ Store.prototype.render = function(){
   var ul = document.createElement('ul');
   h2.appendChild(ul);
 
-//add Table to DOM
-  var table = document.createElement('table');
-  h2.appendChild(table);
-  //add table headers to DOM
+//add Table data rows to DOM
+  var tr = document.createElement('tr');
+  table.appendChild(tr);
   var th = document.createElement('th');
-  th.textContent = '6:00am';
-  table.appendChild(th);
+  th.textContent = this.location;
+  table.appendChild(tr);
 
 
   totDayCook = 0;
@@ -73,6 +72,7 @@ Store.prototype.tableHead = function(){
 
 //add Table to DOM
   var table = document.createElement('table');
+  table.setAttribute('id', 'daily');
   h2.appendChild(table);
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
