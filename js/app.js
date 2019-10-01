@@ -30,6 +30,15 @@ Store.prototype.render = function(){
   var ul = document.createElement('ul');
   h2.appendChild(ul);
 
+//add Table to DOM
+  var table = document.createElement('table');
+  h2.appendChild(table);
+  //add table headers to DOM
+  var th = document.createElement('th');
+  th.textContent = '6:00am';
+  table.appendChild(th);
+
+
   totDayCook = 0;
 
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
@@ -53,6 +62,26 @@ Store.prototype.estCookHrLoc = function(){
   }
 };
 
+Store.prototype.tableHead = function(){
+  var body = document.getElementById('body');
+  var h2 = document.createElement('h2');
+  h2.textContent = this.location;
+  body.appendChild(h2);
+
+  var ul = document.createElement('ul');
+  h2.appendChild(ul);
+
+//add Table to DOM
+  var table = document.createElement('table');
+  h2.appendChild(table);
+  //add table headers to DOM
+  for (var i = 0; i < hrOp.length; i++){
+    var th = document.createElement('th');
+    th.textContent = hrOp[i];
+    table.appendChild(th);
+  }
+};
+
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
 var dubai = new Store('Dubai', 11, 38, 3.7, [], 0);
@@ -62,13 +91,18 @@ var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 //Estimating number of cookies and rendering to DOM
 //TODO  place data above into single array.
 //      write a loop function to estimate the hourly cookie totals and render each store.
+seattle.tableHead();
 seattle.estCookHrLoc();
 seattle.render();
+tokyo.tableHead();
 tokyo.estCookHrLoc();
 tokyo.render();
+dubai.tableHead();
 dubai.estCookHrLoc();
 dubai.render();
+paris.tableHead();
 paris.estCookHrLoc();
 paris.render();
+lima.tableHead();
 lima.estCookHrLoc();
 lima.render();
