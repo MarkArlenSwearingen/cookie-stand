@@ -11,6 +11,7 @@ var seattle = {
   maxCustHr: 65,
   avgCookCust: 6.3,
   avgCookHrLoc: [ ],
+  totDayCook: 0,
   estCookHrLoc: function() {
     //calculate the cookies per hour per location
     //store value in avgCookHrLoc array
@@ -18,9 +19,36 @@ var seattle = {
       var estCookHr = Math.floor ((Math.random() * (this.maxCustHr - this.minCustHr) + this.minCustHr) * this.avgCookCust);
       console.log(estCookHr);
       console.log(hrOp[i]);
-      //console.log(location);
+      this.avgCookHrLoc.push(estCookHr);
+      console.log(this.avgCookHrLoc);
     }
-  }
+  },
+  render: function(){
+    var body = document.getElementById('body');
+    console.log(body);
+
+    var h2 = document.createElement('h2');
+    h2.textContent = this.location;
+    body.appendChild(h2);
+
+    var ul = document.createElement('ul');
+    h2.appendChild(ul);
+
+    totDayCook = 0;
+    
+    for(var i = 0; i < this.avgCookHrLoc.length; i++){
+      var li = document.createElement('li');
+      li.textContent = `${hrOp[i]} ${this.avgCookHrLoc[i]} cookies`;
+      ul.appendChild(li);
+
+      var totDayCook = totDayCook + this.avgCookHrLoc[i]
+      if (i === this.avgCookHrLoc.length - 1){
+        li = document.createElement('li');
+        li.textContent = `Total: ${totDayCook} cookies`;
+        ul.appendChild(li);
+      }
+    }
+  },
 };
 
 var tokyo = {
@@ -96,7 +124,8 @@ var lima = {
 };
 
 seattle.estCookHrLoc();
-tokyo.estCookHrLoc();
-dubai.estCookHrLoc();
-paris.estCookHrLoc();
-lima.estCookHrLoc();
+seattle.render();
+// tokyo.estCookHrLoc();
+// dubai.estCookHrLoc();
+// paris.estCookHrLoc();
+// lima.estCookHrLoc();
