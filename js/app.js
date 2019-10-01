@@ -23,33 +23,41 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 //Define Prototype Functions
 Store.prototype.render = function(){
   var body = document.getElementById('body');
-  var h2 = document.createElement('h2');
-  h2.textContent = this.location;
-  body.appendChild(h2);
+  // var h2 = document.createElement('h2');
+  // h2.textContent = this.location;
+  // body.appendChild(h2);
 
-  var ul = document.createElement('ul');
-  h2.appendChild(ul);
+  // var ul = document.createElement('ul');
+  // h2.appendChild(ul);
 
 //add Table data rows to DOM
+  var table = document.getElementById('daily');
+  console.log(table);
   var tr = document.createElement('tr');
   table.appendChild(tr);
+  console.log(tr);
   var th = document.createElement('th');
-  th.textContent = this.location;
-  table.appendChild(tr);
+  tr.appendChild(th);
+  console.log(th);
+  var td = document.createElement('td');
+  td.textContent = this.location;
+  td.appendChild(th);
+  console.log(td);
+
 
 
   totDayCook = 0;
 
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
-    var li = document.createElement('li');
-    li.textContent = `${hrOp[i]} ${this.avgCookHrLoc[i]} cookies`;
-    ul.appendChild(li);
+    var td = document.createElement('td');
+    td.textContent = `${this.avgCookHrLoc[i]}`;
+    th.appendChild(td);
 
     var totDayCook = totDayCook + this.avgCookHrLoc[i];
     if (i === this.avgCookHrLoc.length - 1){
-      li = document.createElement('li');
-      li.textContent = `Total: ${totDayCook} cookies`;
-      ul.appendChild(li);
+      td = document.createElement('td');
+      td.textContent = `Total: ${totDayCook} cookies`;
+      th.appendChild(td);
     }
   }
 };
@@ -67,18 +75,24 @@ Store.prototype.tableHead = function(){
   h2.textContent = this.location;
   body.appendChild(h2);
 
-  var ul = document.createElement('ul');
-  h2.appendChild(ul);
+  // var ul = document.createElement('ul');
+  // h2.appendChild(ul);
 
 //add Table to DOM
   var table = document.createElement('table');
   table.setAttribute('id', 'daily');
   h2.appendChild(table);
+  var tr = document.createElement('tr');
+  table.appendChild(tr);
+  console.log(tr);
+  var th = document.createElement('th');
+  tr.appendChild(th);
+  
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
     var th = document.createElement('th');
     th.textContent = hrOp[i];
-    table.appendChild(th);
+    tr.appendChild(th);
   }
 };
 
