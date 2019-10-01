@@ -3,8 +3,7 @@
 //put sales.html into pages folder
 //Make code more Dry by moving random into its own function.
 //Create single point of entry
-//Place data into table rather than list
-//Calculate new Daily Location Total
+//Calculate new Daily Location Total(Done in lab 6) - Hour totals needed 10/2/2019
 
 
 //defining global variables
@@ -32,20 +31,7 @@ Store.prototype.render = function(){
 
 //add Table data rows to DOM
   var table = document.getElementById('daily');
-  console.log(table);
-  // var tr = document.createElement('tr');
-  // table.appendChild(tr);
-  // console.log(tr);
-  // var th = document.createElement('th');
-  // table.appendChild(th);
-  // console.log(th);
-  // var td = document.createElement('td');
-  // td.textContent = this.location;
-  // td.appendChild(th);
-  // console.log(td);
-
-
-
+  
   totDayCook = 0;
 
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
@@ -55,7 +41,8 @@ Store.prototype.render = function(){
       var td = document.createElement('td');
       td.textContent = this.location;
       tr.appendChild(td);
-    }    var td = document.createElement('td');
+    }
+    td = document.createElement('td');
     td.textContent = `${this.avgCookHrLoc[i]}`;
     tr.appendChild(td);
 
@@ -101,6 +88,10 @@ Store.prototype.tableHead = function(){
     th.textContent = hrOp[i];
     tr.appendChild(th);
   }
+  //add Daily Total text for column header
+  th = document.createElement('th');
+  th.textContent = 'Daily Location Total';
+  tr.appendChild(th);
 };
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
