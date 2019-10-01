@@ -22,7 +22,7 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 
 //Define Prototype Functions
 Store.prototype.render = function(){
-  var body = document.getElementById('body');
+  // var body = document.getElementById('body');
   // var h2 = document.createElement('h2');
   // h2.textContent = this.location;
   // body.appendChild(h2);
@@ -33,31 +33,37 @@ Store.prototype.render = function(){
 //add Table data rows to DOM
   var table = document.getElementById('daily');
   console.log(table);
-  var tr = document.createElement('tr');
-  table.appendChild(tr);
-  console.log(tr);
-  var th = document.createElement('th');
-  tr.appendChild(th);
-  console.log(th);
-  var td = document.createElement('td');
-  td.textContent = this.location;
-  td.appendChild(th);
-  console.log(td);
+  // var tr = document.createElement('tr');
+  // table.appendChild(tr);
+  // console.log(tr);
+  // var th = document.createElement('th');
+  // table.appendChild(th);
+  // console.log(th);
+  // var td = document.createElement('td');
+  // td.textContent = this.location;
+  // td.appendChild(th);
+  // console.log(td);
 
 
 
   totDayCook = 0;
 
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
-    var td = document.createElement('td');
+    if (i===0){
+      var tr = document.createElement('tr');
+      table.appendChild(tr);
+      var td = document.createElement('td');
+      td.textContent = this.location;
+      tr.appendChild(td);
+    }    var td = document.createElement('td');
     td.textContent = `${this.avgCookHrLoc[i]}`;
-    th.appendChild(td);
+    tr.appendChild(td);
 
     var totDayCook = totDayCook + this.avgCookHrLoc[i];
     if (i === this.avgCookHrLoc.length - 1){
       td = document.createElement('td');
       td.textContent = `Total: ${totDayCook} cookies`;
-      th.appendChild(td);
+      tr.appendChild(td);
     }
   }
 };
@@ -71,17 +77,18 @@ Store.prototype.estCookHrLoc = function(){
 
 Store.prototype.tableHead = function(){
   var body = document.getElementById('body');
-  var h2 = document.createElement('h2');
-  h2.textContent = this.location;
-  body.appendChild(h2);
+  // var h2 = document.createElement('h2');
+  // // h2.textContent = this.location;
+  // body.appendChild(h2);
 
-  // var ul = document.createElement('ul');
-  // h2.appendChild(ul);
+  // // var ul = document.createElement('ul');
+  // // h2.appendChild(ul);
 
 //add Table to DOM
   var table = document.createElement('table');
+  console.log(table);
   table.setAttribute('id', 'daily');
-  h2.appendChild(table);
+  body.appendChild(table);
   var tr = document.createElement('tr');
   table.appendChild(tr);
   console.log(tr);
@@ -108,15 +115,15 @@ var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 seattle.tableHead();
 seattle.estCookHrLoc();
 seattle.render();
-tokyo.tableHead();
+
 tokyo.estCookHrLoc();
 tokyo.render();
-dubai.tableHead();
+
 dubai.estCookHrLoc();
 dubai.render();
-paris.tableHead();
+
 paris.estCookHrLoc();
 paris.render();
-lima.tableHead();
+
 lima.estCookHrLoc();
 lima.render();
