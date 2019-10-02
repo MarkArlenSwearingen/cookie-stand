@@ -22,10 +22,17 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 }
 
 //Define Prototype Functions
+Store.prototype.estCookHrLoc = function(){
+  for (var i = 0; i < hrOp.length; i++) {
+    var estCookHr = Math.floor ((Math.random() * (this.maxCustHr - this.minCustHr) + this.minCustHr) * this.avgCookCust);
+    this.avgCookHrLoc.push(estCookHr);
+  }
+};
+
 Store.prototype.render = function(){
   //add Table data rows to DOM
   totDayCook = 0;
-  var table = document.getElementById('daily'); 
+  var table = document.getElementById('daily');
   var tr = document.createElement('tr');
   table.appendChild(tr);
   var td = document.createElement('td');
@@ -49,13 +56,6 @@ Store.prototype.render = function(){
   td = document.createElement('td');
   td.textContent = `Total: ${totDayCook} cookies`;
   tr.appendChild(td);
-};
-
-Store.prototype.estCookHrLoc = function(){
-  for (var i = 0; i < hrOp.length; i++) {
-    var estCookHr = Math.floor ((Math.random() * (this.maxCustHr - this.minCustHr) + this.minCustHr) * this.avgCookCust);
-    this.avgCookHrLoc.push(estCookHr);
-  }
 };
 
 Store.prototype.tableHead = function(){
@@ -96,7 +96,7 @@ Store.prototype.tableFooter = function(){
 
   for (var i = 0; i < hrOp.length; i++){
     td = document.createElement('td');
-    //loop for hourly total
+
     var hourTotSum = 0;
     for(var j = 0; j < storeObjects.length; j++){
       var storeName = storeObjects[j];
@@ -112,17 +112,20 @@ Store.prototype.tableFooter = function(){
   tr.appendChild(td);
 };
 
+//Delete footer function
+//https://www.w3schools.com/jsref/met_table_deletetfoot.asp
 function delTabFoot(){
   document.getElementById('daily').deleteTFoot();
   grandTot = 0;
+  //https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset
+  document.getElementById('newstore').reset();
 }
+
 //Form
 var newStoreForm = document.getElementById('newstore');
-console.log(newStoreForm);
 newStoreForm.addEventListener('submit', createStore);
 
 function createStore(event){
-  // alert('Proof of life');
   event.preventDefault();
   var location = event.target.location.value;
   var minCustHr = event.target.minCustHr.value;
@@ -130,7 +133,6 @@ function createStore(event){
   var avgCookCust = event.target.avgCookCust.value;
 
   var newStore = new Store(location, minCustHr, maxCustHr, avgCookCust, [],0);
-  console.log(newStore);
   newStore.estCookHrLoc();
   console.log(newStore);
   newStore.render();
@@ -139,8 +141,7 @@ function createStore(event){
   newStore.tableFooter();
 }
 
-//Delete footer function
-//https://www.w3schools.com/jsref/met_table_deletetfoot.asp
+
 
 
 
