@@ -7,7 +7,7 @@
 
 //defining global variables
 var hrOp = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var hourTot = {};
+var hourTot = [];
 
 //Create constructor functions;
 function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDayCook) {
@@ -29,13 +29,24 @@ Store.prototype.render = function(){
   var td = document.createElement('td');
   td.textContent = this.location;
   tr.appendChild(td);
+  //write out location to global variable for accessing hourly totals;
+  hourTot.push([this.location, []]);
+  // console.log(hourTot);
+  //add location to hourly total for all locations object
 
+  //loop through the array of cookies by hour to create DOM;
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
     td = document.createElement('td');
     td.textContent = `${this.avgCookHrLoc[i]}`;
     tr.appendChild(td);
     var totDayCook = totDayCook + this.avgCookHrLoc[i];
+
+    //write out cookies by hour to global variable for accessing hourly totals;
+    // console.log(hourTot.length-1);
+    hourTot[hourTot.length-1][1].push(this.avgCookHrLoc[i]);
+    // console.log(hourTot);
   }
+  //add totals by location to DOM;
   td = document.createElement('td');
   td.textContent = `Total: ${totDayCook} cookies`;
   tr.appendChild(td);
@@ -52,18 +63,16 @@ Store.prototype.tableHead = function(){
   var body = document.getElementById('body');
   // add Table to DOM;
   var table = document.createElement('table');
-  console.log(table);
   table.setAttribute('id', 'daily');
   body.appendChild(table);
   var tr = document.createElement('tr');
   table.appendChild(tr);
-  console.log(tr);
   var th = document.createElement('th');
   tr.appendChild(th);
   
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
-    var th = document.createElement('th');
+    th = document.createElement('th');
     th.textContent = hrOp[i];
     tr.appendChild(th);
   }
@@ -78,27 +87,39 @@ Store.prototype.tableFooter = function(){
   var body = document.getElementById('body');
   // add Table to DOM;
   var table = document.createElement('table');
-  console.log(table);
+  // console.log(table);
   table.setAttribute('id', 'daily');
   body.appendChild(table);
   var tr = document.createElement('tr');
  
   table.appendChild(tr);
-  console.log(tr);
+  // console.log(tr);
   var th = document.createElement('th');
   th.textContent = 'Totals';
   tr.appendChild(th);
   
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
+    console.log(hourTot.length);
     th = document.createElement('th');
-    th.textContent = hrOp[i];//revise to totals from global variable hourTot;
+    //loop for hourly total
+    var hourTotSum = 0;
+    for(var j = 0; j < hrOp.length; j++){
+      // console.log(hourTot);
+      // if (hourTot[j][0] === this.location){
+      // console.log(hourTot[j][0]);
+      // console.log('hello');
+      // hourTotSum =+ hourTotSum;
+      // }
+    }
+    th.textContent = hourTotSum;//revise to totals from global variable hourTot;
     tr.appendChild(th);
   }
   //add Hourly Grand Total text for row header
   th = document.createElement('th');
   th.textContent = 'Grand Total goes here';
   tr.appendChild(th);
+  console.log(typeof(hourTot));
 };
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
@@ -109,7 +130,7 @@ var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 
 //Estimating number of cookies and rendering to DOM
 //TODO  place data above into single array.
-//      write a loop function to estimate the hourly cookie totals and render each store.
+//      write a loop function to estimate the hourly cookie total
 seattle.tableHead();
 seattle.tableFooter();
 seattle.estCookHrLoc();
