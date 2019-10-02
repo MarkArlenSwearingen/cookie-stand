@@ -1,9 +1,4 @@
 'use strict';
-//TO DO LIST:
-//put sales.html into pages folder
-//Make code more Dry by moving random into its own function.
-//Create single point of entry
-//Place location objects data into single array.
 
 //defining global variables
 var hrOp = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -134,16 +129,10 @@ function createStore(event){
 
   var newStore = new Store(location, minCustHr, maxCustHr, avgCookCust, [],0);
   newStore.estCookHrLoc();
-  console.log(newStore);
   newStore.render();
-  console.log(storeObjects);
   delTabFoot();
   newStore.tableFooter();
 }
-
-
-
-
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
