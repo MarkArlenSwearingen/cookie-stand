@@ -8,7 +8,20 @@
 </head>
 <body id="body">
   <nav><a href = "../index.html">Homepage</a></nav>
- <h1>Sales forecast by location</h1>
+     <form id='newstore'>
+      <fieldset>
+        <legend>Add another store</legend>
+        <label>Location</label>
+        <input name=location type=text required=true>
+        <label>Minimum number of customer per hour</label>
+        <input name=minCustHr type="number" min="1", max="9999", step=0.1, required=true>
+        <label>Maximum number of customers per hour</label>
+        <input name=maxCustHr type="number" min="1", max="9999" step=0.1, required=true>
+        <button>Submit New Store </button>
+
+      </fieldset>
+      <h1>Sales forecast by location</h1>
+    </form>
     <script src="./js/app.js"></script>
 </body>
 </html>

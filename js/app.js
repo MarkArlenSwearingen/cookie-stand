@@ -107,6 +107,23 @@ Store.prototype.tableFooter = function(){
   td.textContent = `Grand Total: ${grandTot}`;
   tr.appendChild(td);
 };
+//Form
+var newStoreForm = document.getElementById('newstore');
+console.log(newStoreForm);
+newStoreForm.addEventListener('submit', createStore);
+
+function createStore(event){
+  alert('Proof of life');
+  event.preventDefault();
+  var location = event.target.location.value;
+  var minCustHr = event.target.location.value;
+  var maxCustHr = event.target.location.value;
+//use variables to render DOM
+
+}
+
+
+//
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
