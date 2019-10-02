@@ -5,10 +5,9 @@
 //Create single point of entry
 //Calculate new Daily Location Total(Done in lab 6) - Hour totals needed 10/2/2019
 
-
 //defining global variables
 var hrOp = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-var hourTot = [];
+var hourTot = {};
 
 //Create constructor functions;
 function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDayCook) {
@@ -22,27 +21,17 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 
 //Define Prototype Functions
 Store.prototype.render = function(){
-  // var body = document.getElementById('body');
-  // var h2 = document.createElement('h2');
-  // h2.textContent = this.location;
-  // body.appendChild(h2);
-
-  // var ul = document.createElement('ul');
-  // h2.appendChild(ul);
-
-//add Table data rows to DOM
+  //add Table data rows to DOM
   var table = document.getElementById('daily');
-  
+
   totDayCook = 0;
 
+  var tr = document.createElement('tr');
+  table.appendChild(tr);
+  var td = document.createElement('td');
+  td.textContent = this.location;
+  tr.appendChild(td);
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
-    if (i===0){
-      var tr = document.createElement('tr');
-      table.appendChild(tr);
-      var td = document.createElement('td');
-      td.textContent = this.location;
-      tr.appendChild(td);
-    }
     td = document.createElement('td');
     td.textContent = `${this.avgCookHrLoc[i]}`;
     tr.appendChild(td);
@@ -54,6 +43,7 @@ Store.prototype.render = function(){
       tr.appendChild(td);
     }
   }
+  
 };
 
 Store.prototype.estCookHrLoc = function(){
