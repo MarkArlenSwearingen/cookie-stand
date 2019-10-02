@@ -113,17 +113,20 @@ console.log(newStoreForm);
 newStoreForm.addEventListener('submit', createStore);
 
 function createStore(event){
-  alert('Proof of life');
+  // alert('Proof of life');
   event.preventDefault();
   var location = event.target.location.value;
-  var minCustHr = event.target.location.value;
-  var maxCustHr = event.target.location.value;
-//use variables to render DOM
+  var minCustHr = event.target.minCustHr.value;
+  var maxCustHr = event.target.maxCustHr.value;
+  var avgCookCust = event.target.avgCookCust.value;
 
+  var newStore = new Store(location, minCustHr, maxCustHr, avgCookCust, [],0);
+  console.log(newStore);
+  newStore.estCookHrLoc();
+  console.log(newStore);
+  newStore.render();
+  console.log(storeObjects);
 }
-
-
-//
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
