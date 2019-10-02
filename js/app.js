@@ -84,8 +84,10 @@ Store.prototype.tableHead = function(){
 //add table footer to DOM
 Store.prototype.tableFooter = function(){
   var table = document.getElementById('daily');
+  var tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
   var tr = document.createElement('tr');
-  table.appendChild(tr);
+  tfoot.appendChild(tr);
   var td = document.createElement('td');
   td.textContent = 'Totals';
   tr.appendChild(td);
@@ -107,6 +109,7 @@ Store.prototype.tableFooter = function(){
   td.textContent = `Grand Total: ${grandTot}`;
   tr.appendChild(td);
 };
+
 //Form
 var newStoreForm = document.getElementById('newstore');
 console.log(newStoreForm);
@@ -126,6 +129,14 @@ function createStore(event){
   console.log(newStore);
   newStore.render();
   console.log(storeObjects);
+  delTabFoot();
+}
+
+//Delete footer function
+//https://www.w3schools.com/jsref/met_table_deletetfoot.asp
+
+function delTabFoot(){
+  document.getElementById('daily').deleteTFoot();
 }
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
