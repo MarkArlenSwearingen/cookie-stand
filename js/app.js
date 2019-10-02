@@ -8,6 +8,7 @@
 //defining global variables
 var hrOp = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var hourTot = [];
+var storeObjects = [];
 
 //Create constructor functions;
 function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDayCook) {
@@ -31,7 +32,10 @@ Store.prototype.render = function(){
   tr.appendChild(td);
   //write out location to global variable for accessing hourly totals;
   hourTot.push([this.location, []]);
+  storeObjects.push(this);//global variable for new design of summing hours;
   // console.log(hourTot);
+  // console.log(storeObjects);
+  // console.log(storeObjects.length);
   //add location to hourly total for all locations object
 
   //loop through the array of cookies by hour to create DOM;
@@ -69,7 +73,7 @@ Store.prototype.tableHead = function(){
   table.appendChild(tr);
   var th = document.createElement('th');
   tr.appendChild(th);
-  
+
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
     th = document.createElement('th');
@@ -100,11 +104,17 @@ Store.prototype.tableFooter = function(){
   
   //add table headers to DOM
   for (var i = 0; i < hrOp.length; i++){
-    console.log(hourTot.length);
+    // console.log('hello');
     th = document.createElement('th');
     //loop for hourly total
     var hourTotSum = 0;
-    for(var j = 0; j < hrOp.length; j++){
+    // console.log(storeObjects.length);
+    for(var j = 0; j < storeObjects.length; j++){
+      var storeName = storeObjects[j];
+      console.log(storeName.location);
+
+      console.log(storeName.avgCookHrLoc[i]);
+      
       // console.log(hourTot);
       // if (hourTot[j][0] === this.location){
       // console.log(hourTot[j][0]);
@@ -119,7 +129,7 @@ Store.prototype.tableFooter = function(){
   th = document.createElement('th');
   th.textContent = 'Grand Total goes here';
   tr.appendChild(th);
-  console.log(typeof(hourTot));
+  // console.log(typeof(hourTot));
 };
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
@@ -132,7 +142,7 @@ var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 //TODO  place data above into single array.
 //      write a loop function to estimate the hourly cookie total
 seattle.tableHead();
-seattle.tableFooter();
+
 seattle.estCookHrLoc();
 seattle.render();
 
@@ -147,3 +157,5 @@ paris.render();
 
 lima.estCookHrLoc();
 lima.render();
+
+seattle.tableFooter();
