@@ -22,28 +22,23 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 //Define Prototype Functions
 Store.prototype.render = function(){
   //add Table data rows to DOM
-  var table = document.getElementById('daily');
-
   totDayCook = 0;
-
+  var table = document.getElementById('daily'); 
   var tr = document.createElement('tr');
   table.appendChild(tr);
   var td = document.createElement('td');
   td.textContent = this.location;
   tr.appendChild(td);
+
   for(var i = 0; i < this.avgCookHrLoc.length; i++){
     td = document.createElement('td');
     td.textContent = `${this.avgCookHrLoc[i]}`;
     tr.appendChild(td);
-
     var totDayCook = totDayCook + this.avgCookHrLoc[i];
-    if (i === this.avgCookHrLoc.length - 1){
-      td = document.createElement('td');
-      td.textContent = `Total: ${totDayCook} cookies`;
-      tr.appendChild(td);
-    }
   }
-  
+  td = document.createElement('td');
+  td.textContent = `Total: ${totDayCook} cookies`;
+  tr.appendChild(td);
 };
 
 Store.prototype.estCookHrLoc = function(){
