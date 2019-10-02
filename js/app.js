@@ -112,8 +112,6 @@ Store.prototype.tableFooter = function(){
 function delTabFoot(){
   document.getElementById('daily').deleteTFoot();
   grandTot = 0;
-  //https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset
-  document.getElementById('newstore').reset();
 }
 
 //Form
