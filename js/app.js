@@ -64,8 +64,10 @@ Store.prototype.tableHead = function(){
   var table = document.createElement('table');
   table.setAttribute('id', 'daily');
   body.appendChild(table);
+  var thead = document.createElement('thead');
+  table.appendChild(thead);
   var tr = document.createElement('tr');
-  table.appendChild(tr);
+  thead.appendChild(tr);
   var th = document.createElement('th');
   tr.appendChild(th);
 
@@ -110,6 +112,10 @@ Store.prototype.tableFooter = function(){
   tr.appendChild(td);
 };
 
+function delTabFoot(){
+  document.getElementById('daily').deleteTFoot();
+  grandTot = 0;
+}
 //Form
 var newStoreForm = document.getElementById('newstore');
 console.log(newStoreForm);
@@ -130,14 +136,13 @@ function createStore(event){
   newStore.render();
   console.log(storeObjects);
   delTabFoot();
+  newStore.tableFooter();
 }
 
 //Delete footer function
 //https://www.w3schools.com/jsref/met_table_deletetfoot.asp
 
-function delTabFoot(){
-  document.getElementById('daily').deleteTFoot();
-}
+
 
 var seattle = new Store('Seattle', 23, 65, 6.3, [], 0);
 var tokyo = new Store('Tokyo', 3, 24, 1.2, [], 0);
