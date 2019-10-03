@@ -17,9 +17,15 @@ function Store(location, minCustHr, maxCustHr, avgCookCust, avgCookHrLoc, totDay
 }
 
 //Define Prototype Functions
+Store.prototype.random = function(){
+  var randomNum = Math.random() * (this.maxCustHr - this.minCustHr) + this.minCustHr;
+  return randomNum;
+};
+
 Store.prototype.estCookHrLoc = function(){
   for (var i = 0; i < hrOp.length; i++) {
-    var estCookHr = Math.floor ((Math.random() * (this.maxCustHr - this.minCustHr) + this.minCustHr) * this.avgCookCust);
+    var randomHr = this.random();
+    var estCookHr = Math.floor(randomHr * this.avgCookCust);
     this.avgCookHrLoc.push(estCookHr);
   }
 };
@@ -139,7 +145,6 @@ var paris = new Store('Paris', 20, 38, 2.3, [], 0);
 var lima = new Store('Lima', 2, 16, 4.6, [], 0);
 
 //Estimating number of cookies and rendering to DOM
-
 seattle.tableHead();
 
 seattle.estCookHrLoc();
