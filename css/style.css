@@ -1,0 +1,15 @@
+* {
+  background-color: aqua;
+}
+nav {
+  /* display: inline-block; */
+  
+}
+
+nav ul li{
+  background-color: green;
+  display: inline-block;
+  float: right;
+  margin: 40px;
+  padding: 30px;
+  }
