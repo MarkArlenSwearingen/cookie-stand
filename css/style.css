@@ -1,15 +1,23 @@
 * {
-  background-color: aqua;
+  background-color: darkgray;
 }
 nav {
-  /* display: inline-block; */
-  
+  display: flex;
+  background-color: whitesmoke;
 }
 
 nav ul li{
-  background-color: green;
+  background-color: white;
   display: inline-block;
-  float: right;
-  margin: 40px;
-  padding: 30px;
+  margin: 20px;
+  padding: 15px 45px;
+  }
+
+  #logo {
+    width: 240px;
+    height: 80px;
+  }
+
+  #hero {
+    margin-left: 40px;
   }
