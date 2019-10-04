@@ -4,13 +4,14 @@
 nav {
   display: flex;
   background-color: whitesmoke;
+  position: fixed;
 }
 
 nav ul li{
   background-color: white;
   display: inline-block;
   margin: 20px;
-  padding: 15px 45px;
+  padding: 15px 60px;
   }
 
   #logo {
@@ -23,10 +24,10 @@ nav ul li{
   }
 
   .card {
-    /* display: flex; */
     width: 200px;
     height: 200px;
     margin: 10px;
+    border-radius: 30px;
   }
 
   #card {
@@ -36,10 +37,46 @@ nav ul li{
   }
 
   #storeinfo {
-    /* display: block; */
     width: 440px;
     height: 440px;
     float: left;
     outline: 2px dotted green;
     margin: 10px 10px 10px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:  14px;
+  }
+
+ .locations {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:  24px;
+    margin-left: 30px;
+  }
+
+  h3, h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:  36px;
+    margin-left: 0px;
+  }
+
+  p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size:  24px;
+    margin-left: 20px;
+  }
+  
+  a {
+    font-family: 'Times New Roman', Times, serif;
+    font-size:  24px;
+    margin-left: 45px;
+  }
+
+  #hours {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    font-size: 18px;
+    margin: 5px 5px 5px 60px;
+  }
+
+  #address {
+    margin-left: 45px;
   }
