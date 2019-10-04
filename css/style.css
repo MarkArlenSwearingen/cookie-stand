@@ -34,3 +34,12 @@ nav ul li{
     width: 480px;
     height: 480px;
   }
+
+  #storeinfo {
+    /* display: block; */
+    width: 440px;
+    height: 440px;
+    float: left;
+    outline: 2px dotted green;
+    margin: 10px 10px 10px 20px;
+  }
