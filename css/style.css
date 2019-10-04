@@ -21,3 +21,16 @@ nav ul li{
   #hero {
     margin-left: 40px;
   }
+
+  .card {
+    /* display: flex; */
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+  }
+
+  #card {
+    display: inline-block;
+    width: 480px;
+    height: 480px;
+  }
