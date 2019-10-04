@@ -20,7 +20,8 @@ nav ul li{
   }
 
   #hero {
-    margin-left: 40px;
+    margin: 100px 0px 0px 40px;
+    border-radius: 30px;
   }
 
   .card {
@@ -40,7 +41,7 @@ nav ul li{
     width: 440px;
     height: 440px;
     float: left;
-    outline: 2px dotted green;
+    /* outline: 2px dotted green; */
     margin: 10px 10px 10px 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size:  14px;
