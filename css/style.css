@@ -1,9 +1,36 @@
-* {
-  background-color: darkgray;
+/* * {
+  background-color:#04060F;
+  color: #A79C93;
+} */
+
+/* Colors:
+LIGHT: 46 Winter Barn
+#E0E8F0;
+#51A2D9:
+#53C0F0;
+#B9E8F3;
+#8A140E;
+
+DARK: 14 Turquoise and Red
+#04060F;
+#03353E;
+#0294A5;
+#A79C93
+#C1403D;
+
+Google fots
+font-family: 'Permanent Marker', cursive;
+font-family: 'Abril Fatface', cursive;
+*/
+
+div, main, header, body{
+  background-color: #04060F;
 }
+
+
 nav {
   display: flex;
-  background-color: whitesmoke;
+  background-color:#04060F;
   position: fixed;
 }
 
@@ -14,14 +41,41 @@ nav ul li{
   padding: 15px 60px;
   }
 
+  h1 {
+    color: #A79C93;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:  36px;
+    margin-left: 0px;
+  }
+
+  h3, h4 {
+    color: #0294A5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:  36px;
+    margin-left: 0px;
+  }
+
+  #daily {
+    background-color: #0294A5;
+    color: white;
+  }
+
   #logo {
+    display: inline-block;
     width: 240px;
     height: 80px;
   }
 
   #hero {
-    margin: 100px 0px 0px 40px;
+    margin: 40px 0px 0px 40px;
     border-radius: 30px;
+  }
+
+  #herotxt {
+    margin: 80px 0px 0px 40px;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 4em;
+    /* border-radius: 30px; */
   }
 
   .card {
@@ -52,25 +106,24 @@ nav ul li{
     margin-left: 30px;
   }
 
-  h3, h4 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:  36px;
-    margin-left: 0px;
-  }
+
 
   p {
+    color: #0294A5;
     font-family: 'Times New Roman', Times, serif;
     font-size:  24px;
     margin-left: 20px;
   }
   
   a {
+    background-color: #04060F;
     font-family: 'Times New Roman', Times, serif;
     font-size:  24px;
     margin-left: 45px;
   }
 
   #hours {
+        color: #8A140E;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
     font-size: 18px;
@@ -78,5 +131,32 @@ nav ul li{
   }
 
   #address {
+    color: #8A140E;
     margin-left: 45px;
+  }
+
+  #newstore {
+    margin-top: 60px;
+    font-size: 1.5em;
+    width: 600px;
+    background-color:#0294A5 ;
+    color: #8A140E;
+  }
+
+  #daily {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+  }
+
+  thead, tfoot{
+    font-size: 1.2em;
+  }
+  
+  legend {
+    font-size: 1.8em;
+    background-color: #A79C93;
+  }
+
+  button {
+    font-size: 1.2em;
   }
