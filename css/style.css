@@ -37,8 +37,9 @@ nav {
 nav ul li{
   background-color: white;
   display: inline-block;
-  margin: 20px;
-  padding: 15px 60px;
+  margin-left: 5px;
+  padding: 32px 60px;
+  font-size:  24px;
   }
 
   h1 {
@@ -61,6 +62,12 @@ nav ul li{
   }
 
   #logo {
+    display: inline-block;
+    width: 240px;
+    height: 88px;
+  }
+
+  #logo-size {
     display: inline-block;
     width: 240px;
     height: 80px;
@@ -106,8 +113,6 @@ nav ul li{
     margin-left: 30px;
   }
 
-
-
   p {
     color: #0294A5;
     font-family: 'Times New Roman', Times, serif;
@@ -116,10 +121,20 @@ nav ul li{
   }
   
   a {
+    
+    text-align: center;
     background-color: #04060F;
     font-family: 'Times New Roman', Times, serif;
     font-size:  24px;
-    margin-left: 45px;
+    /* margin-left: 45px; */
+  }
+
+  a:visited {
+    background-color: white;
+  }
+
+  a:hover {
+    background-color: #A79C93;
   }
 
   #hours {
